@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <title>ABM de usuarios</title>
+    <!--archivos de estilos-->
+    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <!--librerias-->
+    <script src="Scripts/jquery-3.1.1.js"></script>
+    <script src="Scripts/tether.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/xml2json.js"></script>
+    <!--behavior-->
+    <script src="app.js"></script>
+    <script src="Services/serivicioFront.js"></script>
+    <script src="Controller/controllerFront.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <div class="container">
+        <h2>Formulario para Crear, Eliminar o Actualizar registros</h2>{{5+5}}
+        <div class="bd-example" data-example-id="">
+            <div class="row justify-content-center">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Busqueda avanzada
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Crear usuario
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> Actualizar usuario
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option4" autocomplete="off"> Eliminar usuario
+                    </label>
+                </div>
+            </div>
+            <div id="formularioControl">
+                <!--campo id-->
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Id</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="Iker" id="example-text-input" ng-model="id">
+                    </div>
+                </div>
+                <!--campo nombre-->
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Nombre</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="Iker" id="nombre-input" ng-model="nombre">
+                    </div>
+                </div>
+                <!--campo apellido-->
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Apellido</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="Casillas" id="apellido-input" ng-model="apellido">
+                    </div>
+                </div>
+                <!--campo correo-->
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                    <div class="col-10">
+                        <input class="form-control" type="email" value="ikercasillas@example.com" id="email-input" ng-model="email">
+                    </div>
+                </div>
+                <!--campo password-->
+                <div class="form-group row">
+                    <label for="example-password-input" class="col-2 col-form-label">Password</label>
+                    <div class="col-10">
+                        <input class="form-control" type="password" value="hunter2" id="password-input" ng-model="password">
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group justify-content-center">
+                <button type="button" class="btn btn-outline-success" ng-click="getUser(id)">Buscar usuario</button>
+                <button type="button" class="btn btn-outline-success" ng-click="createUser(id, nombre, apellido, email, password)">Crear usuario</button>
+                <button type="button" class="btn btn-outline-warning" ng-click="updateUser(id, nombre, apellido, email, password)">Actualizar usuario</button>
+                <button type="button" class="btn btn-outline-danger" ng-click="deleteUser(id)">Eliminar usuario</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

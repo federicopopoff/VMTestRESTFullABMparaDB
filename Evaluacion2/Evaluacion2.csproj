@@ -87,6 +87,17 @@
     <Content Include="App_Data\usuarios_log.ldf">
       <DependentUpon>usuarios.mdf</DependentUpon>
     </Content>
+    <Content Include="Client\app.js" />
+    <Content Include="Client\Controller\controllerFront.js" />
+    <Content Include="Client\index.html" />
+    <Content Include="Client\Scripts\angular-resource.js" />
+    <Content Include="Client\Scripts\angular.min.js" />
+    <Content Include="Client\Scripts\bootstrap.min.js" />
+    <Content Include="Client\Scripts\jquery-3.1.1.js" />
+    <Content Include="Client\Scripts\tether.min.js" />
+    <Content Include="Client\Scripts\xml2json.js" />
+    <Content Include="Client\Services\serivicioFront.js" />
+    <Content Include="Client\styles\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Modelo\ModeloUsuarios.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
