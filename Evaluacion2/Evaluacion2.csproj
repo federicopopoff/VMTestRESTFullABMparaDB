@@ -89,7 +89,7 @@
     </Content>
     <Content Include="Client\app.js" />
     <Content Include="Client\Controller\controllerFront.js" />
-    <Content Include="Client\index.html" />
+    <Content Include="index.html" />
     <Content Include="Client\Scripts\angular-resource.js" />
     <Content Include="Client\Scripts\angular.min.js" />
     <Content Include="Client\Scripts\bootstrap.min.js" />

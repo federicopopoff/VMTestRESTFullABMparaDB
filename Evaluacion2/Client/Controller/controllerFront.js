@@ -4,14 +4,20 @@ angular
     .controller('myCtrl', myCtrl);
 
 //inyeccion
-myCtrl.$inject = ['$scope', 'apiservice']
+myCtrl.$inject = ['$scope', 'apiservice', '$http', '$resource']
 
 //declaracion de metodos y propiedades
+function myCtrl($scope, apiservice, $http, $resource) {
 
-function myCtrl($scope, apiservice) {
-    $scope.getAllUsers = function () {
-        apiservice.getAllUsers();
-    };
+    $scope.nav = 0;
+
+    $http.get('../usuarios/users').
+        then(function (response) {
+            $scope.baseDatos = response.data;
+            console.log($scope.baseDatos);
+    });
+    
+    
     $scope.getUser = function (user) {
         apiservice.getUser(user);
     };
@@ -24,7 +30,5 @@ function myCtrl($scope, apiservice) {
     $scope.createUser = function (user, nombre, apellido, email, password) {
         apiservice.createUser(user, nombre, apellido, email, password);
     };
-    $scope.prueba = function (texto){
-        console.log(texto);
-    }
+    
 }

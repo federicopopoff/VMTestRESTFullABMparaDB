@@ -3,40 +3,45 @@
 <head>
     <title>ABM de usuarios</title>
     <!--archivos de estilos-->
-    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="Client/styles/bootstrap.min.css" rel="stylesheet" />
     <!--librerias-->
-    <script src="Scripts/jquery-3.1.1.js"></script>
-    <script src="Scripts/tether.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/angular-resource.js"></script>
-    <script src="Scripts/xml2json.js"></script>
+    <script src="Client/Scripts/jquery-3.1.1.js"></script>
+    <script src="Client/Scripts/tether.min.js"></script>
+    <script src="Client/Scripts/bootstrap.min.js"></script>
+    <script src="Client/Scripts/angular.min.js"></script>
+    <script src="Client/Scripts/angular-resource.js"></script>
+    <script src="Client/Scripts/xml2json.js"></script>
     <!--behavior-->
-    <script src="app.js"></script>
-    <script src="Services/serivicioFront.js"></script>
-    <script src="Controller/controllerFront.js"></script>
+    <script src="Client/app.js"></script>
+    <script src="Client/Services/serivicioFront.js"></script>
+    <script src="Client/Controller/controllerFront.js"></script>
 </head>
 <body ng-controller="myCtrl">
     <div class="container">
-        <h2>Formulario para Crear, Eliminar o Actualizar registros</h2>{{5+5}}
+        <h2>Formulario para Crear, Eliminar o Actualizar registros</h2>
         <div class="bd-example" data-example-id="">
+        <!--Barra de navegacion-->
             <div class="row justify-content-center">
-                <div class="btn-group" data-toggle="buttons">
+                <div class="btn-group">
                     <label class="btn btn-primary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Busqueda avanzada
+                        <input type="radio" name="options" id="option0" checked ng-model="nav" value="0"> Base de datos
                     </label>
                     <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Crear usuario
+                        <input type="radio" name="options" id="option1" ng-model="nav" value="1"> Busqueda avanzada
                     </label>
                     <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> Actualizar usuario
+                        <input type="radio" name="options" id="option2" ng-model="nav" value="2"> Crear usuario
                     </label>
                     <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option4" autocomplete="off"> Eliminar usuario
+                        <input type="radio" name="options" id="option3" ng-model="nav" value="3"> Actualizar usuario
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option4" autocomplete="off" ng-model="nav" value="4"> Eliminar usuario
                     </label>
                 </div>
             </div>
-            <div id="formularioControl">
+            <!--formulario de control-->
+            <div id="formularioControl" ng-hide="nav==0">
                 <!--campo id-->
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Id</label>
@@ -44,42 +49,66 @@
                         <input class="form-control" type="text" value="Iker" id="example-text-input" ng-model="id">
                     </div>
                 </div>
+                <div ng-hide="nav==1||nav==4">
                 <!--campo nombre-->
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">Nombre</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value="Iker" id="nombre-input" ng-model="nombre">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Nombre</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="Iker" id="nombre-input" ng-model="nombre">
+                        </div>
+                    </div>
+                    <!--campo apellido-->
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Apellido</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="Casillas" id="apellido-input" ng-model="apellido">
+                        </div>
+                    </div>
+                    <!--campo correo-->
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                        <div class="col-10">
+                            <input class="form-control" type="email" value="ikercasillas@example.com" id="email-input" ng-model="email">
+                        </div>
+                    </div>
+                    <!--campo password-->
+                    <div class="form-group row">
+                        <label for="example-password-input" class="col-2 col-form-label">Password</label>
+                        <div class="col-10">
+                            <input class="form-control" type="password" value="hunter2" id="password-input" ng-model="password">
+                        </div>
                     </div>
                 </div>
-                <!--campo apellido-->
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">Apellido</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value="Casillas" id="apellido-input" ng-model="apellido">
-                    </div>
-                </div>
-                <!--campo correo-->
-                <div class="form-group row">
-                    <label for="example-email-input" class="col-2 col-form-label">Email</label>
-                    <div class="col-10">
-                        <input class="form-control" type="email" value="ikercasillas@example.com" id="email-input" ng-model="email">
-                    </div>
-                </div>
-                <!--campo password-->
-                <div class="form-group row">
-                    <label for="example-password-input" class="col-2 col-form-label">Password</label>
-                    <div class="col-10">
-                        <input class="form-control" type="password" value="hunter2" id="password-input" ng-model="password">
-                    </div>
-                </div>
-
             </div>
-            <div class="form-group justify-content-center">
-                <button type="button" class="btn btn-outline-success" ng-click="getUser(id)">Buscar usuario</button>
-                <button type="button" class="btn btn-outline-success" ng-click="createUser(id, nombre, apellido, email, password)">Crear usuario</button>
-                <button type="button" class="btn btn-outline-warning" ng-click="updateUser(id, nombre, apellido, email, password)">Actualizar usuario</button>
-                <button type="button" class="btn btn-outline-danger" ng-click="deleteUser(id)">Eliminar usuario</button>
+            <!--botones de acciones-->
+            <div class="form-group row justify-content-center">
+                <!--<button type="button" class="btn btn-outline-secondary" ng-click="getUser(id)" ng-hide="nav==0">Refrescar</button>-->
+                <button type="button" class="btn btn-outline-primary" ng-click="getUser(id)" ng-show="nav==1">Buscar usuario</button>
+                <button type="button" class="btn btn-outline-success" ng-click="createUser(id, nombre, apellido, email, password)" ng-show="nav==2">Crear usuario</button>
+                <button type="button" class="btn btn-outline-warning" ng-click="updateUser(id, nombre, apellido, email, password)" ng-show="nav==3">Actualizar usuario</button>
+                <button type="button" class="btn btn-outline-danger" ng-click="deleteUser(id)" ng-show="nav==4">Eliminar usuario</button>
             </div>
+            <!--Tabla de base datos-->
+            <table class="table" ng-show="nav==0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo Electronico</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr ng-repeat="item in baseDatos">
+                        <td>{{item.Id}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.apellido}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.password}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>

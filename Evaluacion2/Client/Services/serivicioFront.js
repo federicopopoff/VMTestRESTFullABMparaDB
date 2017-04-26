@@ -1,4 +1,5 @@
-﻿//creacion de servicio
+﻿
+//creacion de servicio
 angular
     .module('myApp')
     .factory('apiservice', apiservice);
@@ -17,27 +18,32 @@ function apiservice($http) {
         getUser: function (user) {
             $http.get("../usuarios/users/"+user)
                 .then(function (response) {
-                    console.log(response.data);
-                });
+                    respuesta = "Has consultado por el usuario con ID: " + response.data.Id + " con Nombre: " + response.data.nombre + ", con apellido: " + response.data.apellido + ", email: " + response.data.email+", password: "+response.data.password ;
+                    window.alert(respuesta);
+                },function(response)
+                {
+                    window.alert("Usuario no encontrado");
+                }
+                );
         },
         deleteUser: function (user) {
             $http.delete("../usuarios/users/" + user)
                 .then(function (response) {
-                    console.log(response.data);
+                    console.log("Eliminacion de usuario exitosa");
                 });
         },
         updateUser: function (user,nombre,apellido,email,password) {
             data = '{"Id":'+user+',"nombre":"'+nombre+'","apellido":"'+apellido+'","email":"'+email+'","password":"'+password+'"}';
-            $http.put("../usuarios/users/" + user)
+            $http.put("../usuarios/users/" + user,data)
                 .then(function (response) {
-                    console.log(response.data);
+                    console.log("Actualizacion de usuario exitosa");
                 });
         },
         createUser: function (user,nombre,apellido,email,password) {
             data = '{"Id":'+user+',"nombre":"'+nombre+'","apellido":"'+apellido+'","email":"'+email+'","password":"'+password+'"}';
-            $http.post("../usuarios/users/" + user)
+            $http.post("../usuarios/users/",data)
                 .then(function (response) {
-                    console.log(response.data);
+                    console.log("Creacion de usuario exitosa");
                 });
         }
     }
